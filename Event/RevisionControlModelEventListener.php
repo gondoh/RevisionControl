@@ -6,16 +6,16 @@ class RevisionControlModelEventListener extends BcModelEventListener {
  * @var array
  */
 	public $events = array(
-		'beforeSave',
+		'afterSave',
 	);
 
 /**
- * beforeSave
+ * afterSave
  *
  * @param CakeEvent $event
  * @return boolean
  */
-	public function beforeSave(CakeEvent $event) {
+	public function afterSave(CakeEvent $event) {
 
 		$model = $event->subject;
 		$modelName = $model->name;
@@ -74,6 +74,4 @@ class RevisionControlModelEventListener extends BcModelEventListener {
 		return true;
 
 	}
-
-
 }
