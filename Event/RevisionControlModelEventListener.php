@@ -51,6 +51,11 @@ class RevisionControlModelEventListener extends BcModelEventListener {
 					'deta_object' => serialize($model->data)
 				)
 			);
+			// 更新ユーザ情報を追加
+			$user = BcUtil::loginUser();
+			if ($user) {
+				$revData['RevisionControl']['user_id'] = $user['id'];
+			}
 			// 保存
 			$revisionControlMdl->save($revData, false);
 

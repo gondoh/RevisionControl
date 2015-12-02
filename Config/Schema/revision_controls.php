@@ -1,7 +1,7 @@
-<?php 
-class RevisionControlSchema extends CakeSchema {
+<?php
+class RevisionControlsSchema extends CakeSchema {
 
-	public $file = 'revision_control.php';
+	public $file = 'revision_controls.php';
 
 	public $connection = 'plugin';
 
@@ -20,6 +20,7 @@ class RevisionControlSchema extends CakeSchema {
 		'model_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 8),
 		'revision' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 8),
 		'deta_object' => array('type' => 'text', 'null' => true, 'default' => null),
+		'user_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 8),
 
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
