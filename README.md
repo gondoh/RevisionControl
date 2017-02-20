@@ -6,9 +6,9 @@ PluginフォルダにRevisionControlというフォルダ名にて設置し、�
 有効化後は、データ保存時に保存データを履歴として保存します。
 
 # 動作baserCMS
-baserCMS3.0.12
-baserCMS4.0.1
-baserCMS4.0.2
+baserCMS3.0.12 br
+baserCMS4.0.1 br
+baserCMS4.0.2 br 
 
 # 該当データについて
 ブログ記事・固定ページの履歴が管理できます。
