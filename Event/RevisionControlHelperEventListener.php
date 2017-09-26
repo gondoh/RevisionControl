@@ -11,7 +11,21 @@ class RevisionControlHelperEventListener extends BcHelperEventListener {
 
 
 	public function formAfterEnd(CakeEvent $event) {
+		if (!BcUtil::isAdminSystem()) {
+			return;
+		}
+
 		$view = $event->subject;
+
+		if (version_compare($view->viewVars['siteConfig']['version'], '4.0.0', '>=')) {
+			if (!in_array($event->data['id'], array('PageAdminEditForm', 'BlogPostForm'))) {
+				return;
+			}
+		} else {
+			if (!in_array($event->data['id'], array('PageForm', 'BlogPostForm'))) {
+				return;
+			}
+		}
 
 		foreach(Configure::read('RevisionControl.views') as $modelName => $requestTarget) {
 			if ($requestTarget['controller'] == $view->request['controller']
