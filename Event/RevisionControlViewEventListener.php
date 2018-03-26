@@ -26,7 +26,8 @@ class RevisionControlViewEventListener extends BcViewEventListener {
 					$revisionControlMdl = ClassRegistry::init('RevisionControl.RevisionControl');
 					$rev = $view->request->params['named']['rev'];
 					$id = $view->request->data[$modelName]['id'];
-
+					$bkDir = Configure::read('RevisionControl.filesDir');
+					
 					// 過去リヴィジョンのデータを取得
 					$data = $revisionControlMdl->find('first', array(
 						'conditions' => array(
@@ -43,13 +44,26 @@ class RevisionControlViewEventListener extends BcViewEventListener {
 						foreach($overWriteModels  as $overWriteModel) {
 							if (!empty($dataObj[$overWriteModel])) {
 								$view->request->data[$overWriteModel] =$dataObj[$overWriteModel];
+								
+								// BcUpload処理
+								if ($overWriteModel == 'BlogPost' && 
+									Configure::read('RevisionControl.actsAs.BcUpload.' . $overWriteModel)) {
+									$fileFields = Configure::read('RevisionControl.actsAs.BcUpload.' . $overWriteModel);
+									foreach($fileFields as $fileField) {
+										$fieldData = $dataObj[$modelName][$fileField];
+										$revId = $data['RevisionControl']['id'];
+										if (empty($fieldData)) {
+										} else {
+											$path = "$bkDir/$revId/$fieldData";
+											$view->request->data[$overWriteModel][$fileField] = $path;
+										}
+									}
+								}
 							}
-
 						}
 					}
 				}
 			}
 		}
 	}
-
 }

@@ -6,9 +6,17 @@ $config = array(
 			'Page' => array('Page', 'PageCategory'),
 			'BlogPost' => array('BlogPost', 'BlogTag'),
 		),
+		'actsAs'	=> array(
+			'BcUpload' => array(
+				'BlogPost' => array(
+					'eye_catch'
+				)
+			)
+		),
 		'views' => array(
 			'BlogPost' => array('controller'=> 'blog_posts', 'action' => 'admin_edit'),
 			'Page' => array('controller'=> 'pages', 'action' => 'admin_edit')
 		),
+		'filesDir' => '_rvc',
 	),
 );
