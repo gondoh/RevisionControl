@@ -12,6 +12,12 @@ class RevisionControlHelperEventListener extends BcHelperEventListener {
 
 	public function formAfterEnd(CakeEvent $event) {
 		$view = $event->subject;
+		
+		foreach(Configure::read('RevisionControl.excludeFormId') as $excludeId) {
+			if (isset($event->data['id']) && $event->data['id'] == $excludeId) {
+				return;
+			}
+		}
 
 		foreach(Configure::read('RevisionControl.views') as $modelName => $requestTarget) {
 			if ($requestTarget['controller'] == $view->request['controller']

@@ -18,5 +18,11 @@ $config = array(
 			'Page' => array('controller'=> 'pages', 'action' => 'admin_edit')
 		),
 		'filesDir' => '_rvc',
+		
+		// 除外フォーム
+		'excludeFormId' => [
+			'FavoriteAjaxForm',
+			'PermissionAjaxAddForm',
+		]
 	),
 );
