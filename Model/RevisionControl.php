@@ -1,6 +1,6 @@
 <?php
 
-class RevisionControl extends BcPluginAppModel {
+class RevisionControl extends AppModel {
 	
 	public $name = 'RevisionControl';
 	public $plugin = 'RevisionControl';
