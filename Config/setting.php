@@ -2,6 +2,7 @@
 $config = array(
 	'RevisionControl' => array(
 		'limit' 	=> 0,	// 世代制限 0:無し | 数値
+		'displayLimit' => 20,
 		'models'	=> array(
 			'Page' => array('Page', 'PageCategory'),
 			'BlogPost' => array('BlogPost', 'BlogTag'),
@@ -18,7 +19,7 @@ $config = array(
 			'Page' => array('controller'=> 'pages', 'action' => 'admin_edit')
 		),
 		'filesDir' => '_rvc',
-		
+
 		// 除外フォーム
 		'excludeFormId' => [
 			'FavoriteAjaxForm',
