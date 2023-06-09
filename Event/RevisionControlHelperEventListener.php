@@ -12,7 +12,7 @@ class RevisionControlHelperEventListener extends BcHelperEventListener {
 
 	public function formAfterEnd(CakeEvent $event) {
 		$view = $event->subject;
-		
+
 		foreach(Configure::read('RevisionControl.excludeFormId') as $excludeId) {
 			if (isset($event->data['id']) && $event->data['id'] == $excludeId) {
 				return;
@@ -33,7 +33,8 @@ class RevisionControlHelperEventListener extends BcHelperEventListener {
 						'model_name' => $modelName,
 						'model_id' => $id,
 					),
-					'order' => 'revision desc'
+					'order' => 'revision desc',
+					'limit' => Configure::read('RevisionControl.displayLimit')
 				));
 
 				if ($revList) {
